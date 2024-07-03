@@ -1,0 +1,23 @@
+{
+  "name": "@gentlepeople/sheetbridge",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "changeset:check": "changeset status",
+    "precommit": "pnpm -r run precommit",
+    "build:api": "nx run api:clean && nx run api:build",
+    "docker": "docker-compose down -v && docker-compose up -d"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.27.6",
+    "@nx/devkit": "19.4.0",
+    "@nx/workspace": "19.4.0",
+    "husky": "^9.0.11",
+    "nx": "19.4.0"
+  },
+  "engines": {
+    "pnpm": "8.10.5"
+  }
+}

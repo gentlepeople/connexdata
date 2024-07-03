@@ -1,0 +1,38 @@
+version: '3.8'
+name: sheetbridge
+
+services:
+  api:
+    container_name: sheetbridge-api
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    ports:
+      - '4000:4000'
+    environment:
+      - SPRING_PROFILES_ACTIVE=local
+      - DATASOURCE_MYSQL_URL=jdbc:mysql://mysql:3306/sheetbridgedb?serverTimezone=UTC&characterEncoding=UTF-8
+      - DATASOURCE_MYSQL_USERNAME=gentlepeople
+      - DATASOURCE_MYSQL_PASSWORD=0000
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    container_name: sheetbridge-db
+    image: mysql:8.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 0000
+    ports:
+      - '3307:3306'
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./apps/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
