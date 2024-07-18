@@ -29,6 +29,7 @@ dependencies {
   implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
   implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
   implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+  implementation group: 'org.flywaydb', name: 'flyway-core', version: '10.15.2'
   implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1' // logging sql query
   developmentOnly 'org.springframework.boot:spring-boot-devtools'
   compileOnly 'org.projectlombok:lombok'
