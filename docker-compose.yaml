@@ -1,9 +1,9 @@
 version: '3.8'
-name: sheetbridge
+name: connexdata
 
 services:
   api:
-    container_name: sheetbridge-api
+    container_name: connexdata-api
     build:
       context: ./apps/api
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
       - '4000:4000'
     environment:
       - SPRING_PROFILES_ACTIVE=local
-      - DATASOURCE_MYSQL_URL=jdbc:mysql://mysql:3306/sheetbridgedb?serverTimezone=UTC&characterEncoding=UTF-8
+      - DATASOURCE_MYSQL_URL=jdbc:mysql://mysql:3306/connexdatadb?serverTimezone=UTC&characterEncoding=UTF-8
       - DATASOURCE_MYSQL_USERNAME=gentlepeople
       - DATASOURCE_MYSQL_PASSWORD=0000
     depends_on:
@@ -19,7 +19,7 @@ services:
         condition: service_healthy
 
   mysql:
-    container_name: sheetbridge-db
+    container_name: connexdata-db
     image: mysql:8.3.0
     environment:
       MYSQL_ROOT_PASSWORD: 0000

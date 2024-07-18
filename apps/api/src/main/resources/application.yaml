@@ -3,16 +3,22 @@ server:
 
 spring:
   datasource:
-    url: ${DATASOURCE_MYSQL_URL}
+    url: ${DATASOURCE_MYSQL_URL:jdbc:mysql://mysql:3306/connexdatadb?serverTimezone=UTC&characterEncoding=UTF-8}
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${DATASOURCE_MYSQL_USERNAME}
-    password: ${DATASOURCE_MYSQL_PASSWORD}
+    username: ${DATASOURCE_MYSQL_USERNAME:gentlepeople}
+    password: ${DATASOURCE_MYSQL_PASSWORD:0000}
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     properties:
       hibernate:
         format_sql: true
+    generate-ddl: false
+  sql:
+    init:
+      mode: always
+  flyway:
+    enabled: true
 
 logging:
   level:

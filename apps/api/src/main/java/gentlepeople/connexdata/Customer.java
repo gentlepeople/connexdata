@@ -1,4 +1,4 @@
-package gentlepeople.sheetbridge;
+package gentlepeople.connexdata;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,8 +11,8 @@ import lombok.Setter;
 @Setter
 public class Customer {
 
-    @Id
-    @GeneratedValue
-    private Long id;
-    private String name;
+  @Id
+  @GeneratedValue
+  private Long id;
+  private String name;
 }

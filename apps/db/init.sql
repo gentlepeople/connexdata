@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS sheetbridgedb;
+CREATE DATABASE IF NOT EXISTS connexdatadb;
 CREATE USER 'gentlepeople'@'%' IDENTIFIED BY '0000';
-GRANT ALL PRIVILEGES ON sheetbridgedb.* TO 'gentlepeople'@'%';
+GRANT ALL PRIVILEGES ON connexdatadb.* TO 'gentlepeople'@'%';
 FLUSH PRIVILEGES;
