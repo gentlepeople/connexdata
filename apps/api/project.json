@@ -1,20 +1,13 @@
 {
   "name": "api",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/api/src",
   "projectType": "application",
   "tags": [],
   "targets": {
-    "clean": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "cd apps/api && ./gradlew clean"
-      }
-    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd apps/api && ./gradlew build"
+        "command": "cd apps/api && ./gradlew clean build"
       }
     },
     "serve": {
@@ -23,16 +16,16 @@
         "command": "cd apps/api && ./gradlew bootRun"
       }
     },
-    "lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "cd apps/api && ./gradlew check"
-      }
-    },
     "test": {
       "executor": "nx:run-commands",
       "options": {
         "command": "cd apps/api && ./gradlew test"
+      }
+    },
+    "migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/api && flyway -url=\"jdbc:mysql://localhost:3307/connexdatadb?serverTimezone=UTC&characterEncoding=UTF-8e\" -user=\"gentlepeople\" -password=\"0000\" -locations=\"classpath:db/migration/\" -baselineOnMigrate=true -baselineVersion=1721295672167 migrate"
       }
     }
   }

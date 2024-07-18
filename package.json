@@ -6,8 +6,9 @@
   "scripts": {
     "prepare": "husky install",
     "precommit": "pnpm -r run precommit",
-    "build:api": "nx run api:clean && nx run api:build",
-    "docker": "docker-compose down -v && docker-compose up -d"
+    "build:api": "nx run api:build",
+    "docker": "docker-compose down -v && pnpm build:api && docker-compose up -d",
+    "docker:reset": "docker-compose down -v && pnpm build:api && docker-compose up --build -d"
   },
   "devDependencies": {
     "@nx/devkit": "19.4.0",
