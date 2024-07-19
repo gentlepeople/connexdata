@@ -13,21 +13,25 @@ services:
       - SPRING_PROFILES_ACTIVE=local
       - DATASOURCE_MYSQL_URL=jdbc:mysql://mysql:3306/connexdatadb?serverTimezone=UTC&characterEncoding=UTF-8
       - DATASOURCE_MYSQL_USERNAME=gentlepeople
-      - DATASOURCE_MYSQL_PASSWORD=0000
+      - DATASOURCE_MYSQL_PASSWORD=gentlepeople
     depends_on:
       mysql:
         condition: service_healthy
 
   mysql:
     container_name: connexdata-db
-    image: mysql:8.3.0
+    image: mysql:8.1.0
+    restart: always
     environment:
+      MYSQL_DATABASE: connexdatadb
+      MYSQL_USER: gentlepeople
+      MYSQL_PASSWORD: gentlepeople
       MYSQL_ROOT_PASSWORD: 0000
     ports:
       - '3307:3306'
     volumes:
       - db-data:/var/lib/mysql
-      - ./apps/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./apps/api/src/main/resources/db/migration/:/docker-entrypoint-initdb.d/
     healthcheck:
       test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
       interval: 10s
