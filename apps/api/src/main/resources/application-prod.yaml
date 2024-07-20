@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: false
+
+logging:
+  level:
+    org.hibernate: warn
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: loggers
