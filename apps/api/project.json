@@ -25,7 +25,19 @@
     "migrate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd apps/api && flyway -url=\"jdbc:mysql://localhost:3307/connexdatadb?serverTimezone=UTC&characterEncoding=UTF-8e\" -user=\"gentlepeople\" -password=\"0000\" -locations=\"classpath:db/migration/\" -baselineOnMigrate=true -baselineVersion=1721295672167 migrate"
+        "command": "cd apps/api && flyway migrate"
+      }
+    },
+    "docker": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/api && docker-compose down -v && nx run build && docker-compose up -d"
+      }
+    },
+    "docker-reset": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/api && docker-compose down -v && nx run build && docker-compose up --build -d"
       }
     }
   }
