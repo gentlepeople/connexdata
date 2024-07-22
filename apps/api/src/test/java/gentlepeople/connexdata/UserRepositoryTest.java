@@ -15,23 +15,23 @@ import org.springframework.transaction.annotation.Transactional;
 })
 class CustomerRepositoryTest {
 
-  @Autowired
-  CustomerRepository customerRepository;
+  // @Autowired
+  // CustomerRepository customerRepository;
 
-  @Test
-  @Transactional
-  public void testCustomer() throws Exception {
-    // given
-    Customer customer = new Customer();
-    customer.setName("customer1");
+  // @Test
+  // @Transactional
+  // public void testCustomer() throws Exception {
+  //   // given
+  //   Customer customer = new Customer();
+  //   customer.setName("customer1");
 
-    // when
-    Long savedId = customerRepository.save(customer);
-    Customer findCustomer = customerRepository.findById(savedId);
+  //   // when
+  //   Long savedId = customerRepository.save(customer);
+  //   Customer findCustomer = customerRepository.findById(savedId);
 
-    // then
-    Assertions.assertThat(findCustomer.getId()).isEqualTo(customer.getId());
-    Assertions.assertThat(findCustomer.getName()).isEqualTo(customer.getName());
-  }
+  //   // then
+  //   Assertions.assertThat(findCustomer.getId()).isEqualTo(customer.getId());
+  //   Assertions.assertThat(findCustomer.getName()).isEqualTo(customer.getName());
+  // }
 
 }

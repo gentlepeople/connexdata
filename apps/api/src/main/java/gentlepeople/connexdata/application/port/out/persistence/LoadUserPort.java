@@ -1,4 +1,4 @@
-package gentlepeople.connexdata.application.port.out;
+package gentlepeople.connexdata.application.port.out.persistence;
 
 import gentlepeople.connexdata.domain.entity.User;
 
