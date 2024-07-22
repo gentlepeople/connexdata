@@ -22,33 +22,35 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
-    implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
-    implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
-    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1' // logging sql query
-    implementation 'io.github.cdimascio:java-dotenv:5.2.2'
+  implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'org.springframework.boot:spring-boot-starter-security'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+  implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+  implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+  implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1' // logging sql query
+  implementation 'io.github.cdimascio:java-dotenv:5.2.2'
+  // Notion SDK
+  implementation 'com.github.seratch:notion-sdk-jvm-core:1.11.1'
+  // flyway
+  implementation group: 'org.flywaydb', name: 'flyway-core', version: '10.15.2'
+  implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '10.15.2'
 
-    implementation group: 'org.flywaydb', name: 'flyway-core', version: '10.15.2'
-    implementation group: 'org.flywaydb', name: 'flyway-mysql', version: '10.15.2'
+  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework.security:spring-security-test'
-    testImplementation 'com.h2database:h2'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  developmentOnly 'org.springframework.boot:spring-boot-devtools'
+  compileOnly 'org.projectlombok:lombok'
+  runtimeOnly 'com.mysql:mysql-connector-j'
+  annotationProcessor 'org.projectlombok:lombok'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'org.springframework.security:spring-security-test'
+  testImplementation 'com.h2database:h2'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 bootJar {
-    archiveFileName = 'ordermeback-SNAPSHOT-exec.jar'
+  archiveFileName = 'ordermeback-SNAPSHOT-exec.jar'
 }
 
 jar {
