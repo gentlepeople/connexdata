@@ -27,4 +27,10 @@ public class NotionClientAdapter implements LoadNotionPort {
     return Optional.of(this.notionClient.retrievePage(pageId, null));
   }
 
+  @Override
+  public NotionClient getNotionClient(String token) {
+    this.notionClient.setToken(token);
+    return this.notionClient;
+  }
+
 }
