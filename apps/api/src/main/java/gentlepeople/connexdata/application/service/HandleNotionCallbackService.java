@@ -1,8 +1,8 @@
 package gentlepeople.connexdata.application.service;
 
 
-import gentlepeople.connexdata.adapter.out.notion.adapter.NotionClientAdapter;
 import gentlepeople.connexdata.application.port.in.HandleNotionCallbackUseCase;
+import gentlepeople.connexdata.application.port.out.notion.LoadNotionPort;
 import gentlepeople.connexdata.common.UseCase;
 import gentlepeople.connexdata.domain.entity.StateManager;
 import jakarta.servlet.http.Cookie;
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class HandleNotionCallbackService implements HandleNotionCallbackUseCase {
 
-  private final NotionClientAdapter notionClientAdapter;
+  private final LoadNotionPort loadNotionPort;
   private final StateManager stateManager;
 
   @Override
@@ -56,7 +56,7 @@ public class HandleNotionCallbackService implements HandleNotionCallbackUseCase 
   }
 
   private OAuthTokenResult exchangeAuthCode(String code, String state) throws NotionOAuthAPIError {
-    NotionClient client = notionClientAdapter.getNotionClient();
+    NotionClient client = loadNotionPort.getNotionClient();
     return client.exchangeAuthCode(code, state);
   }
 }

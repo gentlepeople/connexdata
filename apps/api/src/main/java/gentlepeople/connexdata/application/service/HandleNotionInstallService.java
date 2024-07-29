@@ -1,8 +1,8 @@
 package gentlepeople.connexdata.application.service;
 
 
-import gentlepeople.connexdata.adapter.out.notion.adapter.NotionClientAdapter;
 import gentlepeople.connexdata.application.port.in.HandleNotionInstallUseCase;
+import gentlepeople.connexdata.application.port.out.notion.LoadNotionPort;
 import gentlepeople.connexdata.common.UseCase;
 import gentlepeople.connexdata.domain.entity.StateManager;
 import jakarta.servlet.http.Cookie;
@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class HandleNotionInstallService implements HandleNotionInstallUseCase {
 
-  private final NotionClientAdapter notionClientAdapter;
+  private final LoadNotionPort loadNotionPort;
   private final StateManager stateManager;
 
   @Override
@@ -39,7 +39,7 @@ public class HandleNotionInstallService implements HandleNotionInstallUseCase {
   }
 
   private String getAuthorizeUrl(String state) {
-    NotionClient client = notionClientAdapter.getNotionClient();
+    NotionClient client = loadNotionPort.getNotionClient();
     return "https://api.notion.com/v1/oauth/authorize?owner=user" +
       "&client_id=" + client.getClientId() +
       "&redirect_uri=" + URLEncoder.encode(client.getRedirectUri(), StandardCharsets.UTF_8) +
